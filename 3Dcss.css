@@ -298,3 +298,37 @@ body {
     width: 100% !important;
 }
 
+@media screen and (max-width: 768px) {
+    body { 
+        padding: 10px; 
+    }
+
+    .nav-links {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 10px !important;
+    }
+
+    .nav-item {
+        width: 90% !important;
+        padding: 10px 10px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 14px !important;
+    }
+
+    .header .nav-links .nav-item:not(:last-child)::after {
+        display: none !important;
+    }
+
+    .hero-section, .content-row {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .row-image-box, .hero-profile-box {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+}
