@@ -1,0 +1,40 @@
+import bpy
+
+def create_poseable_rig():
+    armature_data = bpy.data.armatures.new("BarRig_Data")
+
+    rig_obj = bpy.data.objects.new("Bar_Rig", armature_data)
+    
+    bpy.context.collection.objects.link(rig_obj)
+
+    bpy.context.view_layer.objects.active = rig_obj
+
+    bpy.ops.object.mode_set(mode='EDIT')
+    
+    root = armature_data.edit_bones.new("Root")
+    root.head = (0, 0, 0)
+    root.tail = (0, 0, 1)
+    
+    LowerBorder = armature_data.edit_bones.new("Bar.01")
+    LowerBorder.head = (-1, 0, 1)
+    LowerBorder.tail = (-1, 0, 3)
+    LowerBorder.parent = root
+    LowerBorder.use_connect = False
+    
+    UpperBorder = armature_data.edit_bones.new("Bar.02")
+    UpperBorder.head = (1, 0, 1)
+    UpperBorder.tail = (1, 0, 3)
+    UpperBorder.parent = root
+    UpperBorder.use_connect = False
+    
+    bpy.ops.object.mode_set(mode='POSE')
+
+    p_bone = rig_obj.pose.bones["Bar.01"]
+    constraint = p_bone.constraints.new('LIMIT_SCALE')
+    constraint.use_min_x = True
+    constraint.min_x = 0.1
+    constraint.owner_space = 'LOCAL'
+    
+    bpy.ops.object.mode_set(mode= 'OBJECT')
+
+create_poseable_rig()
