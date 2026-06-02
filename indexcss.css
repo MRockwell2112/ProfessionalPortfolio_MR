@@ -227,40 +227,28 @@ body {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   MEDIA QUERIES FOR TABLETS & MEDIUM SCREENS (Max-width: 1024px)
-   ========================================================================== */
 @media screen and (max-width: 1024px) {
-    /* 1. Re-balance the 3-column split to prioritize space for small screens */
     .main-layout {
-        grid-template-columns: 1fr auto 35%; /* Gives more width to the sidebar */
+        grid-template-columns: 1fr auto 35%;
         max-width: 95%;
         gap: 15px;
     }
 
-    /* 2. Tighten nav link paddings so buttons fit neatly on tablet widths */
     .nav-item {
         padding: 8px 24px !important;
     }
 
-    /* 3. Adjust the navbar vertical dividers so they don't shift outward */
     .header .nav-links .nav-item:not(:last-child)::after {
         right: -13% !important;
-        calc: none !important; /* Disables the faulty desktop calc calculation */
+        calc: none !important;
     }
 }
 
-
-/* ==========================================================================
-   MEDIA QUERIES FOR PHONES & SMALL MOBILE DEVICES (Max-width: 768px)
-   ========================================================================== */
 @media screen and (max-width: 768px) {
-    /* 1. Global structural layout reset */
     body {
-        padding: 10px; /* Reduces outer screen margins to save room */
+        padding: 10px;
     }
 
-    /* 2. Turn navbar into a clean 2x2 grid instead of a squeezed horizontal line */
     .nav-links {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
@@ -269,34 +257,34 @@ body {
 
     .nav-item {
         width: 90% !important;
-        padding: 10px 0 !important; /* Converts to clear vertical block button padding */
+        padding: 10px 10px !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+		white-space: nowrap !important;
+		position: relative !important;
+		text-align: center !important;
+		font-size: 14px !important;
     }
 
-    /* Hide the gray vertical separator lines since it's a grid now */
     .header .nav-links .nav-item:not(:last-child)::after {
         display: none !important;
     }
 
-    /* 3. Convert the main 3-column structural row layout into a single vertical column stack */
     .main-layout {
         display: flex !important;
         flex-direction: column !important;
-        height: auto !important; /* Removes the rigid window height constraint to allow scroll */
+        height: auto !important;
         max-width: 100% !important;
         overflow: visible !important;
     }
 
-    /* Hide the vertical separator line asset completely on mobile rows */
     .vertical-divider {
         display: none !important;
     }
 
-    /* 4. Let content boxes handle their inner heights automatically */
     .main-content {
-        padding: 30px 20px !important; /* Prevents text from slamming against screen margins */
+        padding: 30px 20px !important;
         height: auto !important;
         overflow: visible !important;
     }
@@ -305,12 +293,10 @@ body {
         height: auto !important;
     }
 
-    /* 5. Clean up typography leading lines so they aren't massive on tiny screens */
     .intro-text, .body-text {
-        line-height: 1.8 !important; /* Drops from 3 down to a comfortable mobile reading standard */
+        line-height: 1.8 !important;
     }
 
-    /* 6. Center your top avatar profile header items vertically on small phone panels */
     .profile-header {
         flex-direction: column !important;
         text-align: center !important;
